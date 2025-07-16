@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Owner Guilt Detox™ - Quick Reference Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #40b5a8 0%, #2dd4bf 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #40b5a8, #2dd4bf);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        .header h1, .header p {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .sessions-grid {
+            padding: 40px 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .session-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 6px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(64, 181, 168, 0.1);
+        }
+        
+        .session-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(64, 181, 168, 0.2);
+        }
+        
+        .session-1 { border-left-color: #fbbf24; }
+        .session-2 { border-left-color: #f59e0b; }
+        .session-3 { border-left-color: #40b5a8; }
+        .session-4 { border-left-color: #2dd4bf; }
+        
+        .session-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .session-1 .session-number { background: #fbbf24; }
+        .session-2 .session-number { background: #f59e0b; }
+        .session-3 .session-number { background: #40b5a8; }
+        .session-4 .session-number { background: #2dd4bf; }
+        
+        .session-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .session-duration {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .when-to-use {
+            background: #f0fdfa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .when-to-use h4 {
+            color: #2d3748;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .when-to-use p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .key-benefit {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .benefit-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .session-1 .benefit-icon { background: #fbbf24; }
+        .session-2 .benefit-icon { background: #f59e0b; }
+        .session-3 .benefit-icon { background: #40b5a8; }
+        .session-4 .benefit-icon { background: #2dd4bf; }
+        
+        .footer {
+            background: #134e4a;
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        .footer h3 {
+            margin-bottom: 10px;
+            color: #fbbf24;
+        }
+        
+        .footer p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .audio-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .play-button {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #134e4a;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+        }
+        
+        .play-button.playing {
+            background: linear-gradient(45deg, #40b5a8, #2dd4bf);
+            color: white;
+        }
+        
+        .play-button.playing:hover {
+            background: linear-gradient(45deg, #2dd4bf, #14b8a6);
+        }
+        
+        .audio-player {
+            display: none;
+            margin-top: 10px;
+            background: #f0fdfa;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .audio-player.active {
+            display: block;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #a7f3d0;
+            border-radius: 3px;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #40b5a8, #2dd4bf);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #134e4a;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            display: none;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        @media (max-width: 768px) {
+            .sessions-grid {
+                grid-template-columns: 1fr;
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .session-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎧 Dog Owner Guilt Detox™</h1>
+            <p>Quick Reference Guide - When to Listen to Each Session</p>
+        </div>
+        
+        <div class="sessions-grid">
+            <div class="session-card session-1">
+                <div class="audio-icon">🎵</div>
+                <div class="session-number">1</div>
+                <div class="session-title">"You Didn't Fail — You Just Need a Reset Plan"</div>
+                <div class="session-duration">4 minutes, 32 seconds</div>
+                <div class="when-to-use">
+                    <h4>🎯 When to Use</h4>
+                    <p>When you're spiraling into self-blame, feeling like a failure, or convinced you've "ruined" your dog's training</p>
+                </div>
+                <div class="key-benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Releases core guilt & reframes regression as normal</span>
+                </div>
+                <button class="play-button" onclick="playAudio(1)" id="play-btn-1">
+                    <span>🎧</span> Listen Now
+                </button>
+                <div class="audio-player" id="player-1">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-1"></div>
+                    </div>
+                    <div class="audio-controls">
+                        <span id="time-1">0:00 / 4:32</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="session-card session-2">
+                <div class="audio-icon">🎵</div>
+                <div class="session-number">2</div>
+                <div class="session-title">"Resetting Your Energy Before a Spiral Starts"</div>
+                <div class="session-duration">3 minutes, 45 seconds</div>
+                <div class="when-to-use">
+                    <h4>🎯 When to Use</h4>
+                    <p>Before walks, training sessions, or any potentially triggering situation where you feel tense or reactive</p>
+                </div>
+                <div class="key-benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>30-second energy reset technique for immediate calm</span>
+                </div>
+                <button class="play-button" onclick="playAudio(2)" id="play-btn-2">
+                    <span>🎧</span> Listen Now
+                </button>
+                <div class="audio-player" id="player-2">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-2"></div>
+                    </div>
+                    <div class="audio-controls">
+                        <span id="time-2">0:00 / 3:45</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="session-card session-3">
+                <div class="audio-icon">🎵</div>
+                <div class="session-number">3</div>
+                <div class="session-title">"When You Feel Like You've 'Ruined' Your Relationship"</div>
+                <div class="session-duration">5 minutes, 12 seconds</div>
+                <div class="when-to-use">
+                    <h4>🎯 When to Use</h4>
+                    <p>After you've had a reactive moment, yelled, or feel like you've damaged the trust with your dog</p>
+                </div>
+                <div class="key-benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Rebuilds trust & connection after difficult moments</span>
+                </div>
+                <button class="play-button" onclick="playAudio(3)" id="play-btn-3">
+                    <span>🎧</span> Listen Now
+                </button>
+                <div class="audio-player" id="player-3">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-3"></div>
+                    </div>
+                    <div class="audio-controls">
+                        <span id="time-3">0:00 / 5:12</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="session-card session-4">
+                <div class="audio-icon">🎵</div>
+                <div class="session-number">4</div>
+                <div class="session-title">"From Overwhelm to 'I've Got This'"</div>
+                <div class="session-duration">4 minutes, 58 seconds</div>
+                <div class="when-to-use">
+                    <h4>🎯 When to Use</h4>
+                    <p>When you need a confidence boost, feel overwhelmed by the process, or want perspective on your journey</p>
+                </div>
+                <div class="key-benefit">
+                    <div class="benefit-icon">✓</div>
+                    <span>Shifts mindset from overwhelm to confident capability</span>
+                </div>
+                <button class="play-button" onclick="playAudio(4)" id="play-btn-4">
+                    <span>🎧</span> Listen Now
+                </button>
+                <div class="audio-player" id="player-4">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-4"></div>
+                    </div>
+                    <div class="audio-controls">
+                        <span id="time-4">0:00 / 4:58</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>💡 Pro Tip</h3>
+            <p>Listen with headphones in a quiet space. Take the breathing exercises seriously — they work! Re-listen to sessions that resonate most with your current situation. Your mindset is just as important as your dog's behavior.</p>
+        </div>
+        
+        <div class="notification" id="notification">
+            <strong>Audio files not found!</strong><br>
+            To enable audio playback, upload your audio files and update the file paths in the JavaScript section.
+        </div>
+    </div>
+    
+    <script>
+        // Audio file paths - UPDATE THESE WITH YOUR ACTUAL AUDIO FILE PATHS
+        const audioFiles = {
+            1: './audio/session-1-you-didnt-fail.mp3',
+            2: './audio/session-2-resetting-energy.mp3', 
+            3: './audio/session-3-ruined-relationship.mp3',
+            4: './audio/session-4-overwhelm-to-confidence.mp3'
+        };
+        
+        const durations = {
+            1: 272, // 4:32 in seconds
+            2: 225, // 3:45 in seconds  
+            3: 312, // 5:12 in seconds
+            4: 298  // 4:58 in seconds
+        };
+        
+        let currentAudio = null;
+        let currentSession = null;
+        
+        function playAudio(sessionNumber) {
+            const playBtn = document.getElementById(`play-btn-${sessionNumber}`);
+            const player = document.getElementById(`player-${sessionNumber}`);
+            const progress = document.getElementById(`progress-${sessionNumber}`);
+            const timeDisplay = document.getElementById(`time-${sessionNumber}`);
+            
+            // Stop any currently playing audio
+            if (currentAudio && !currentAudio.paused) {
+                currentAudio.pause();
+                resetButton(currentSession);
+            }
+            
+            // If clicking the same session that's already playing, just stop it
+            if (currentSession === sessionNumber && currentAudio && !currentAudio.paused) {
+                currentAudio.pause();
+                resetButton(sessionNumber);
+                return;
+            }
+            
+            // Try to load and play the audio
+            const audio = new Audio(audioFiles[sessionNumber]);
+            
+            audio.addEventListener('loadstart', function() {
+                playBtn.innerHTML = '<span>⏳</span> Loading...';
+                playBtn.disabled = true;
+            });
+            
+            audio.addEventListener('canplay', function() {
+                playBtn.innerHTML = '<span>⏸️</span> Pause';
+                playBtn.classList.add('playing');
+                playBtn.disabled = false;
+                player.classList.add('active');
+                currentAudio = audio;
+                currentSession = sessionNumber;
+                audio.play();
+            });
+            
+            audio.addEventListener('error', function() {
+                showNotification();
+                resetButton(sessionNumber);
+            });
+            
+            audio.addEventListener('timeupdate', function() {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progress.style.width = progressPercent + '%';
+                
+                const currentTime = formatTime(audio.currentTime);
+                const totalTime = formatTime(audio.duration);
+                timeDisplay.textContent = `${currentTime} / ${totalTime}`;
+            });
+            
+            audio.addEventListener('ended', function() {
+                resetButton(sessionNumber);
+            });
+        }
+        
+        function resetButton(sessionNumber) {
+            const playBtn = document.getElementById(`play-btn-${sessionNumber}`);
+            const player = document.getElementById(`player-${sessionNumber}`);
+            const progress = document.getElementById(`progress-${sessionNumber}`);
+            
+            playBtn.innerHTML = '<span>🎧</span> Listen Now';
+            playBtn.classList.remove('playing');
+            playBtn.disabled = false;
+            player.classList.remove('active');
+            progress.style.width = '0%';
+            
+            if (currentSession === sessionNumber) {
+                currentAudio = null;
+                currentSession = null;
+            }
+        }
+        
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+        
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
